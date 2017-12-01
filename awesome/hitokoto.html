@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>一言Hitokoto</title>
+  <style>
+    blockquote{
+     border-left: .1em solid gray;
+     padding-left: 15px;
+   }
+  </style>
+  <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css">
+  <!-- <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
+
 <body>
-  
+  <blockquote id="whisper">
+    <script>
+      fetch('https://sslapi.hitokoto.cn/?encode=text')
+      .then(x => x.text())
+      .then(x => document.getElementById('whisper').innerHTML = x)
+    </script>
+  </blockquote>
+
+  <pre>
+    <code class="html">
+      <blockquote id="whisper">
+        <script>
+          fetch('https://sslapi.hitokoto.cn/?encode=text')
+          .then(x => x.text())
+          .then(x => document.getElementById('whisper').innerHTML = x)
+        </script>
+      </blockquote>
+    </code>
+  </pre>
 </body>
+
 </html>
