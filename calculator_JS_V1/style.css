@@ -1,0 +1,30 @@
+table{
+  border-collapse: collapse;
+  margin: auto auto;
+}
+
+td{
+  width: 150px;
+  line-height: 70px;
+}
+
+.btn{
+  background: lightgray;
+  width: 150px;
+  height: 70px;
+  font-size: x-large;
+}
+
+.btn_click{
+  background: lightgray;
+  width: 302px;
+  height: 70px;
+  font-size: x-large;
+}
+
+.txt{
+  width: 600px;
+  height: 100px;
+  font-size: x-large;
+  text-align: right;
+}
