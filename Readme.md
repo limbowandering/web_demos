@@ -20,3 +20,11 @@ JS文件中包含了一些常用的表单验证.
 
 目前还有两个bug没有解决.
 
+### 4.canvasGame
+
+在canvas上随机生成运动的球, 根据躲避的时间计分数. 比较关键的代码: 碰撞检测. 还用到了localStorage存储分数.
+
+![](./img/canvas1.png)
+
+![](./img/canvas2.png)
+
