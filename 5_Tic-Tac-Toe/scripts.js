@@ -25,7 +25,12 @@ function startGame(){
 }
 
 function turnClick(square){
-  turn(square.target.id, humanPlayer);
+  if(typeof board[square.target.id] === 'number'){
+    turn(square.target.id, humanPlayer)
+    if(!checkTie()){
+      turn(bestSpot(), AIPlayer);
+    }
+  }
 }
 
 function turn(squareId, player){
@@ -42,10 +47,8 @@ function checkWin(board, player){
   let gameWon = null;
   for(let [index, win] of winCombos.entries()){
     if(win.every(elem => plays.indexOf(elem) > -1)){
-      if(win.every(elem => plays.indexOf(elem) > -1)){
         gameWon = {index: index, player: player};
         break;
-      }
     }
   }
   return gameWon;
@@ -59,4 +62,30 @@ function gameOver(gameWon){
   for(let i = 0; i < cells.length; i++){
     cells[i].removeEventListener('click', turnClick, false);
   }
+  declareWinner(gameWon.player === humanPlayer ? 'You win!' : 'You lose.');
+}
+
+function declareWinner(who){
+  document.querySelector('.endGame').style.display = 'block';
+  document.querySelector('.endGame .text').innerText = who;
+}
+
+function emptySquares(){
+  return board.filter(s => typeof s === 'number');
+}
+
+function bestSpot(){
+  return emptySquares()[0];
+}
+
+function checkTie(){
+  if(emptySquares().length === 0){
+    for(let i = 0; i < cells.length; i++){
+      cells[i].style.backgroundColor = 'green';
+      cells[i].removeEventListener('click', turnClick, false);
+    }
+    declareWinner('平局');
+    return true;
+  }
+  return false;
 }
